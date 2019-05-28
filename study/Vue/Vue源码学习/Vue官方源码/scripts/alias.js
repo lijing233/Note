@@ -1,5 +1,8 @@
 const path = require('path')
 
+// __dirname 当前文件所在的目录
+// __dirname =>  F:\lijing_github\mynote\study\Vue\Vue源码学习\Vue官方源码\scripts
+// p => src/platforms/web
 const resolve = p => path.resolve(__dirname, '../', p)
 
 module.exports = {

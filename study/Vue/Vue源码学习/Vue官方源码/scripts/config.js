@@ -26,20 +26,31 @@ const weexFactoryPlugin = {
 
 const aliases = require('./alias')
 const resolve = p => {
+  // eg: p = 'web/entry-runtime.js'
+  // base = 'web'
+  // return path.resolve(, 'entry-runtime.js')
   const base = p.split('/')[0]
   if (aliases[base]) {
+    // 找入口文件
+    // 返回值为：...src/platforms/web/entry-runtime.js 指向src下的web
     return path.resolve(aliases[base], p.slice(base.length + 1))
   } else {
+    // aliase中没有对应则拼接为传入地址 eg: .../dist/vue.runtime.common.js
     return path.resolve(__dirname, '../', p)
   }
 }
 
 const builds = {
   // Runtime only (CommonJS). Used by bundlers e.g. Webpack & Browserify
+  /**
+   * entry:  构建的入口 JS 文件地址
+   * dest:   构建后的 JS 文件地址
+   * format: 构建的格式  cjs 表示构建出来的文件遵循 CommonJS 规范  es 表示构建出来的文件遵循 ES Module 规范   umd 表示构建出来的文件遵循 UMD 规范。
+   */
   'web-runtime-cjs': {
-    entry: resolve('web/entry-runtime.js'),
-    dest: resolve('dist/vue.runtime.common.js'),
-    format: 'cjs',
+    entry: resolve('web/entry-runtime.js'),  
+    dest: resolve('dist/vue.runtime.common.js'), 
+    format: 'cjs', 
     banner
   },
   // Runtime+compiler CommonJS build (CommonJS)

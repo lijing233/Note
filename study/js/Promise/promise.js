@@ -177,6 +177,7 @@ Promise.resolvePromise = function (promise2, x, resolve, reject) {
     }
 }
 
+// 测试用~
 Promise.deferred = function () {
     const defer = {}
     defer.promise = new Promise((resolve, reject) => {

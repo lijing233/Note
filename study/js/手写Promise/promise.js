@@ -117,6 +117,28 @@ class Promise {
 
         return promise2
     }
+
+    all(promiseList) {
+        return new Promise((resolve, reject) => {
+            if (!Array.isArray(promiseList)) {
+                return reject(new TypeError('argument must be an array'))
+            }
+            let countNum = 0;
+            let promiseLen = promiseList.length;
+            let resList = [];
+            for (let i=0; i<promiseLen; i++) {
+                resolve(promiseList[i]).then(res => {
+                    countNum ++;
+                    resList.push(res);
+                    if(countNum === promiseLen) {
+                        resolve(resList)
+                    }
+                }, error => {
+                    reject(error)
+                })
+            }
+        })
+    }
 }
 
 Promise.PENDING = 'pending'

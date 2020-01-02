@@ -1,6 +1,12 @@
 # Vue中Typescript常用写法
 
+[TOC]
+
+
+
 ## 使用Ts的原因
+
+js是一门弱类型、动态类型的语言，存在类型隐式转换、运行时报错等难以预知的问题；而ts是静态类型、强类型语言，编译时即可报错，类型检查更为严格；使开发更为严谨，错误更易发现；其次，接口的定义以及类型的定义更利于团队中代码的维护，也便于代码的阅读
 
 待添加...
 
@@ -16,11 +22,9 @@
 
 > 依赖项
 
-`@vue/cli-plugin-typescript` `typescript`
+npm install `@vue/cli-plugin-typescript` `typescript` `vue-class-component` `vue-property-decorator`
 
-`vue-class-component` `vue-property-decorator`
-
->  `tsconfig.json`
+>  添加`tsconfig.json`
 
 ```json
 {
@@ -65,7 +69,16 @@
 }
 ```
 
-待添加...
+> 添加对.vue文件的ts声明 
+
+```typescript
+declare module "*.vue" {
+  import Vue from "vue";
+  export default Vue;
+}
+```
+
+vue2.x迁移 待添加...
 
 
 
@@ -78,6 +91,14 @@
 [vue-class-component](https://github.com/vuejs/vue-class-component)
 
 [vue官网](https://cn.vuejs.org/v2/guide/typescript.html#ad)
+
+[es6装饰器](https://es6.ruanyifeng.com/#docs/decorator)
+
+
+
+demo
+
+https://github.com/lijing233/vue_ts_demo.git
 
 
 

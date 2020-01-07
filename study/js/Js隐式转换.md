@@ -119,7 +119,7 @@ Math.toString(); // "[object Math]"
 | null      | +0                                                           |
 | 布尔值    | true转换1，false转换为+0                                     |
 | 数字      | 无须转换                                                     |
-| 字符串    | 有字符串解析为数字，例如：‘324’转换为324，‘qwer’转换为NaN    |
+| 字符串    | 有字符串解析为数字，例如：‘324’转换为324，‘qwer’转换为NaN  **''转为0** |
 | 对象(obj) | 先进行 ToPrimitive(obj, Number)转换得到原始值，在进行ToNumber转换为数字 |
 
 ### 3.ToString
@@ -137,9 +137,33 @@ Math.toString(); // "[object Math]"
 
 ## 隐式转换常见场景
 
+```js
+[] 转为字符串是 ""       // String([]) 返回""
+[] 转为数字是 0            // Number([]) 返回0
+[] 转为布尔值是 true        // Boolean([]) 返回true
+true 转为数字是 1       // Number(true) 返回1
+false 转为数字是 0      // Number(false) 返回0
+```
+
 ### 1. +
 
 因为string存在 + 运算, number 同样存在 所以加运算一般会出现隐式特殊的隐式转换,引用类型先转换为基本类型
+
+**string + others (others隐式的转为字符串)**
+
+```js
+'str-' + '' // str-
+'str-' + [] // str
+'str-' + '1' // "str-1"
+'str-' + 1 // "str-1"
+'str-' + false // "str-false"
+'str-' + true // "str-true"
+'str-' + null // "str-null"
+'str-' + undefined // "str-undefined"
+'str-' + NaN // "str-NaN"
+'str-' + {} // "str-[object Object]"
+'str-' + {a:1} // "str-[object Object]"
+```
 
 其他数字运算符直接将非number类型转为number进行计算即可
 
@@ -150,19 +174,85 @@ let obj = {}
 1 + obj  // "1[object Object]"
 
 {} + 1 // 直接控制台计算此结果为 1  因为在console里{}被认为是一个code block 
+
+// 
+2 * '' // 0
+2 * [] // 0
+2 * false // 0
+
+// 
+2 * '1' // 2
+2 * [1] // 2
+2 * true // 2
+
+//
+2 * {} // NaN
+2 * {a:1} // NaN
 ```
 
 
 
-### 2. ==
+### 2. == 双方类型不同
+
+1. **null  undefined**之间比较为true, 和其他类型比较为false
 
 ```javascript
 undefined == undefined // true
 null == null // true
 undefined == null // true
+
 NaN == NaN // false
-引用类型对比地址
-string == number // 将string 转为 number
-带有布尔值比较 需要将双方转为number
+```
+
+2. **string number 将字符串转为数字**
+
+```js
+0 == '' // true
+0 == '0' // true
+1 == '1' // true
+```
+
+3. **其中一个是true或false,将其转为1或0**
+
+```js
+[1] == true // true
+```
+
+4. **对象 == （string/number）将对象转为原始值**
+
+```js
+if({} == '[object Object]') {console.log('ss')} // ss
+```
+
+5. **其他均不相等**
+
+
+
+### 3.if() 将条件转为boolean
+
+```js
+if(false) console.log(2333)
+if('') console.log(2333)
+if(null) console.log(2333)
+if(undefined) console.log(2333)
+if(NaN) console.log(2333
+```
+
+```js
+if(true) console.log(2333) // 2333
+if('test') console.log(2333) // 2333
+if([]) console.log(2333) // 2333
+if({}) console.log(2333) // 2333
+```
+
+
+
+## tip
+
+```js
+if([] == false){console.log('a')}
+if({} == false){console.log('b')}
+if([] == {}){console.log('c')}
+if([]){console.log('d')}
 ```
 

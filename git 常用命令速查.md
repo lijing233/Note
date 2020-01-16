@@ -149,6 +149,8 @@ $ git branch --track [branch] [remote-branch]
 
 # 切换到指定分支，并更新工作区
 $ git checkout [branch-name]
+#
+$ git switch master
 
 # 切换到上一个分支
 $ git checkout -
@@ -212,6 +214,11 @@ $ git revert [commit]
 $ git stash
 $ git stash pop
 
+# 恢复更改文件
+$ git restore .
+
+# 恢复暂存文件
+$ git restore --staged <file>...
 ```
 
 

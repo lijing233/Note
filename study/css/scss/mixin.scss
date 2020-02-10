@@ -1,0 +1,122 @@
+$baseFontSize:75px;
+// px转rem
+@function  px2rem($px){
+	@return $px / $baseFontSize * 1rem;
+}
+
+//定位上下左右居中
+@mixin center {  
+	position: absolute;
+	top: 50%;
+    left: 50%;
+	-webkit-transform: -webkit-translate(-50%, -50%);
+	transform: translate(-50%, -50%)
+}
+
+//定位上下居中
+@mixin center-y {  
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transform: -webkit-translateY(-50%);
+}
+
+//定位左右居中
+@mixin center-x {  
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-transform: -webkit-translateX(-50%);
+}
+
+// 超出一行显示点点
+@mixin ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+// 超出多行显示点点
+@mixin ellipsis-ln($line){
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    overflow : hidden;
+    -webkit-line-clamp: $line;
+}
+
+// 背景图
+@mixin bgImage($url) { 
+	background-image: url($url);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+// 设置input placeholder 字体颜色
+@mixin placeholder($c,$s){
+    &::-webkit-input-placeholder{
+        color:$c;
+        font-size:$s;
+    }
+    &:-moz-placeholder{
+        color:$c;
+        font-size:$s;
+    }
+    &::-moz-placeholder{
+        color:$c;
+        font-size:$s;
+    }
+    &:-ms-input-placeholder{
+        color:$c;
+        font-size:$s;
+    }
+}
+
+// 高度 和 行高 一致
+@mixin hh($h) {
+    height: $h;
+    line-height: $h;
+}
+
+// 宽高
+@mixin wh($width, $height) {
+    width: $width;
+	height: $height;
+}
+
+// 清除浮动
+@mixin clearfloat() {
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+    }
+    &:after{
+        clear: both;
+    }
+}
+
+// mask遮罩
+@mixin mask($color: rgba(0,0,0, .5), $zindex: 1000) {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: $color;
+    z-index: $zindex;
+}
+
+
+// 禁用样式
+@mixin disabled($bgColor: #e6e6e6, $textColor: #ababab) {
+    background-color: $bgColor !important;
+    color: $textColor;
+    cursor: not-allowed !important;
+}
+
+//flex 布局和 子元素 对其方式
+@mixin flex($type: space-between){
+	display: flex;
+	justify-content: $type;
+}

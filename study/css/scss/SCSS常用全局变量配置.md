@@ -438,7 +438,7 @@ $c-background: $color-c6;
 
 
 
-## 2.vue中配置公共scss文件
+## 2.vue中配置全局scss文件引入
 
 ### vue-cli2.x
 

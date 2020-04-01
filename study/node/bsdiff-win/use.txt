@@ -1,0 +1,7 @@
+1.解压（废话）；
+2.打开cmd命令行，进入该目录；
+3.cmd命令行中生成old.apk和new.apk的增量文件old-to-new.patch，“bsdiff old.apk new.apk old-to-new.patch”；
+4.cmd命令行中使用增量文件old-to-new.patch和old.apk合并成新的new2.apk，“bspathc old.apk new2.apk old-to-new.patch”。
+————————————————
+版权声明：本文为CSDN博主「曾博文」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/z191726501/article/details/52802104

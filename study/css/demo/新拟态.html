@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    .box {
+      display: flex;
+    }
+    .content {
+      width: 33.3333%;
+      height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .block {
+      width: 300px;
+      height: 300px;
+      border-radius: 50px;
+    }
+
+    .color1 {
+      background: #fd6382;
+    }
+    .bs1 {
+      box-shadow:  20px 20px 60px #d7546f, -20px -20px 60px #ff7296;
+    }
+
+    .color2 {
+      background:#828282;
+    }
+    .bs2 {
+      box-shadow:  inset 20px 20px 60px #6f6f6f, inset -20px -20px 60px #969696;
+    }
+
+    .color3 {
+      background:#ff9e9e;
+    }
+    .color-g3 {
+      background: linear-gradient(145deg, #e68e8e, #ffa9a9);
+    }
+    .bs3 {
+      box-shadow:  20px 20px 60px #d98686, -20px -20px 60px #ffb6b6;
+    }
+  </style>
+</head>
+<!-- https://neumorphism.io/#fd6382 -->
+<body>
+  <div class="box">
+    <div class="content color1">
+      <div class="block color1 bs1"></div>
+    </div>
+    <div class="content color2">
+      <div class="block color2 bs2"></div>
+    </div>
+    <div class="content color3">
+      <div class="block color-g3 bs3"></div>
+    </div>
+  </div>
+  
+</body>
+</html>

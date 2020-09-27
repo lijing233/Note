@@ -324,6 +324,21 @@ $ git archive
 
 
 
+```git
+# 将工作区和暂存区保存快照
+git stash
+# 将暂存快照还原
+git stash apply
+
+git stash push -m "add feat"
+
+git stash show
+git stash show -p
+
+```
+
+
+
 ### 11.ssh_key
 
 ```shell

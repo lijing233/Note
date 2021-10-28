@@ -73,8 +73,16 @@ npm install --save-dev husky
 
 **生成husky配置**
 
+package.json
+
+```
+"scripts": {
+	"prepare": "husky install"
+}
+```
+
 ```shell
-npx husky install
+npm run prepare
 ```
 
 ```
